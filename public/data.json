@@ -1,0 +1,66 @@
+[
+    {
+        "name": "John Doe",
+        "bank_account_no": "123456789",
+        "salary": 500,
+        "designation": "Engine specialist",
+        "photo": "https://i.ibb.co/hf9y3wF/egine.jpg"
+    },
+    {
+        "name": "Jane Smith",
+        "bank_account_no": "987654321",
+        "salary": 450,
+        "designation": "Body kit maker",
+        "photo": "https://i.ibb.co/t2DntpN/kit.jpg"
+    },
+    {
+        "name": "Jim Brown",
+        "bank_account_no": "112233445",
+        "salary": 300,
+        "designation": "Car washer",
+        "photo": "https://i.ibb.co/TMNBZ0D/carwashpic.jpg"
+    },
+    {
+        "name": "Alice Green",
+        "bank_account_no": "223344556",
+        "salary": 480,
+        "designation": "light specialist",
+        "photo": "https://i.ibb.co/4NtCxCc/light.jpg"
+    },
+    {
+        "name": "Bob White",
+        "bank_account_no": "334455667",
+        "salary": 470,
+        "designation": "Body painter",
+        "photo": "https://i.ibb.co/YPJPtDB/carpaint.jpg"
+    },
+    {
+        "name": "Charlie Black",
+        "bank_account_no": "445566778",
+        "salary": 320,
+        "designation": "wheel specialist",
+        "photo": "https://i.ibb.co/gPT0Hz7/wheel.jpg"
+    },
+    {
+        "name": "Diana Silver",
+        "bank_account_no": "556677889",
+        "salary": 510,
+        "designation": "Brake specialist",
+        "photo": "https://i.ibb.co/jkkx7cs/brake.jpg"
+    },
+    {
+        "name": "Edward Gold",
+        "bank_account_no": "667788990",
+        "salary": 460,
+        "designation": "Body kit maker",
+        "photo": "https://i.ibb.co/fH2nxvg/body2.jpg"
+    },
+    {
+        "name": "Fiona Brown",
+        "bank_account_no": "778899001",
+        "salary": 330,
+        "designation": "Full Bike Service",
+        "photo": "https://i.ibb.co/n6xrScf/fullbike.jpg"
+    }
+    
+]
