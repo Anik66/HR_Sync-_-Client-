@@ -1,6 +1,8 @@
 import { Link} from "react-router-dom"
 
 import login from "../../assets/login.jpg"
+import { useContext } from "react"
+import { AuthContext } from "../../Providers/AuthProvider"
 
 
 
@@ -9,12 +11,19 @@ import login from "../../assets/login.jpg"
 
 const Login = () => {
 
+  const { SigIn} =useContext(AuthContext)
+
     const handlelogin =e =>{
         e.preventDefault()
         const form =e.target
         const email =form.email.value;
         const password =form.password.value
         console.log(email,password)
+        SigIn(email,password)
+        .then(result =>{
+          const user =result.user
+          console.log(user)
+        })
     }
    
 
@@ -126,12 +135,12 @@ const Login = () => {
             <div className='flex items-center justify-between mt-4'>
               <span className='w-1/5 border-b  md:w-1/4'></span>
   
-              <Link
-                to='/registration'
-                className='text-xs text-gray-500 uppercase  hover:underline'
+              <Link to='/signup' className='text-xs text-gray-500 uppercase  hover:underline'
               >
                 or sign up
               </Link>
+
+              <Link to="/" className='text-xs text-gray-500 uppercase  hover:underline'> Back To Home</Link>
   
               <span className='w-1/5 border-b  md:w-1/4'></span>
             </div>
