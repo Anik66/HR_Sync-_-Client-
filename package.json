@@ -12,6 +12,7 @@
   "dependencies": {
     "@egjs/react-flicking": "^4.11.3",
     "@smastrom/react-rating": "^1.5.0",
+    "firebase": "^10.12.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "pure-react-carousel": "^1.30.1",
