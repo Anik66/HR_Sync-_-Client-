@@ -8,6 +8,8 @@ import OurServices from "../Pages/OurServices/OurServices";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PandingWork from "../Pages/PandingWorks/PandingWork";
+import Secret from "../components/Secret/Secret";
+import PrivateRoute from "./PrivateRoute";
 
 
   export const router = createBrowserRouter([
@@ -35,6 +37,11 @@ import PandingWork from "../Pages/PandingWorks/PandingWork";
         {
           path:'pandingwork',
           element:<PandingWork></PandingWork>
+        },
+        {
+          path:'sec',
+          element:<PrivateRoute><Secret></Secret></PrivateRoute>
+
         }
       ]
     },
