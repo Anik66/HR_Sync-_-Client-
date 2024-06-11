@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import img1 from "../../assets/register.jpg"
@@ -7,15 +7,18 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { createContext, useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
   const [error,setError] =useState("")
   const [showPassword, SetShowPassword] = useState(false)
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const {createUser} =useContext(AuthContext)
+  const { register, handleSubmit,reset, formState: { errors } } = useForm();
+  const {createUser,updateUserProfile } =useContext(AuthContext)
+  const navigate =useNavigate()
   const onSubmit = data => {
-    const {email,password,name,photo} =data
+    console.log(data)
+    const {email,password,name,photoURL} =data
     if(password.length <6){
       setError("password length must be 6 character")
       toast.error("password length must be 6 character")
@@ -41,6 +44,20 @@ const SignUp = () => {
     .then(result =>{
       const loggedUser =result.user 
       console.log(loggedUser)
+      updateUserProfile(name,photoURL)
+      .then(()=>{
+         console.log('user profile updated')
+         reset()
+         Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "user created successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate('/')
+      })
+      .catch(error =>console.log(error))
     })
 
   };
@@ -132,17 +149,16 @@ const SignUp = () => {
                 htmlFor='LoggingEmailAddress'
               >
                 
-                <span className="label-text text-2xl font-bold">Photourl</span>
+                <span className="label-text text-2xl font-bold">PhotoURL</span>
               </label>
               <input
                 id='LoggingEmailAddress'
                 autoComplete='email'
-                name='photo'
-                {...register("photo", { required: true })}
+                {...register("photoURL", { required: true })}
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
               />
-              {errors.photo && <span className="font-bold pb-1 text-red-500">Photourl is required</span>}
+              {errors.photoURL&& <span className="font-bold pb-1 text-red-500">Photourl is required</span>}
             </div>
             <div className='mt-4'>
               <label

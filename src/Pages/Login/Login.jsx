@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom"
+import { Link, useLocation, useNavigate} from "react-router-dom"
 
 import login from "../../assets/login.jpg"
 import { useContext } from "react"
@@ -13,6 +13,11 @@ import Swal from "sweetalert2"
 const Login = () => {
 
   const { SigIn} =useContext(AuthContext)
+  const navigate =useNavigate()
+  const location =useLocation()
+
+
+  const from =location.state?.from?.pathname || "/"
 
     const handlelogin =e =>{
         e.preventDefault()
@@ -41,6 +46,7 @@ const Login = () => {
               `
             }
           });
+          navigate(from,{replace:true})
         })
     }
    
