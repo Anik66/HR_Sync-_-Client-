@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useCart from '../../hooks/useCart';
 
 const WorkCard = ({item}) => {
 
@@ -13,6 +14,7 @@ const WorkCard = ({item}) => {
     const navigate =useNavigate()
     const location =useLocation()
     const axiosSecure =useAxiosSecure()
+    const [,refetch] =useCart()
      const handleAddToCart =(work)=>{
         if(user && user.email){
             console.log(user.email,work)
@@ -35,6 +37,8 @@ const WorkCard = ({item}) => {
                         showConfirmButton: false,
                         timer: 1500
                       });
+                      //refetch the card
+                      refetch()
                 }
             })
 
