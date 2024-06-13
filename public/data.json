@@ -4,14 +4,18 @@
         "bank_account_no": "123456789",
         "salary": 500,
         "designation": "Engine specialist",
-        "photo": "https://i.ibb.co/hf9y3wF/egine.jpg"
+        "photo": "https://i.ibb.co/hf9y3wF/egine.jpg",
+        "category":"popular"
+    
     },
     {
         "name": "Jane Smith",
         "bank_account_no": "987654321",
         "salary": 450,
         "designation": "Body kit maker",
-        "photo": "https://i.ibb.co/t2DntpN/kit.jpg"
+        "photo": "https://i.ibb.co/t2DntpN/kit.jpg",
+        "category":"popular"
+
     },
     {
         "name": "Jim Brown",
@@ -32,7 +36,9 @@
         "bank_account_no": "334455667",
         "salary": 470,
         "designation": "Body painter",
-        "photo": "https://i.ibb.co/YPJPtDB/carpaint.jpg"
+        "photo": "https://i.ibb.co/YPJPtDB/carpaint.jpg",
+        "category":"popular"
+
     },
     {
         "name": "Charlie Black",
@@ -60,7 +66,9 @@
         "bank_account_no": "778899001",
         "salary": 330,
         "designation": "Full Bike Service",
-        "photo": "https://i.ibb.co/n6xrScf/fullbike.jpg"
+        "photo": "https://i.ibb.co/n6xrScf/fullbike.jpg",
+        "category":"popular"
+
     }
     
 ]

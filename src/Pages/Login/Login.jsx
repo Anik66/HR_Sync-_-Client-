@@ -17,7 +17,9 @@ const Login = () => {
   const location =useLocation()
 
 
-  const from =location.state?.from?.pathname || "/"
+  const from =location.state?.from?.pathname || "/";
+  console.log('state is location login page ',location.state)
+
 
     const handlelogin =e =>{
         e.preventDefault()
