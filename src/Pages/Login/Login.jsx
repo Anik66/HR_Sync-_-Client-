@@ -12,7 +12,7 @@ import Swal from "sweetalert2"
 
 const Login = () => {
 
-  const { SigIn} =useContext(AuthContext)
+  const { SigIn,googleSignIn} =useContext(AuthContext)
   const navigate =useNavigate()
   const location =useLocation()
 
@@ -51,6 +51,16 @@ const Login = () => {
           navigate(from,{replace:true})
         })
     }
+
+    const handleGoogleSignIn =() =>{
+      googleSignIn()
+      .then(result =>{
+         console.log(result.user)
+         navigate('/')
+      })
+      
+    }
+  
    
 
 
@@ -99,7 +109,7 @@ const Login = () => {
                 </svg>
               </div>
   
-              <span  className='w-5/6 px-4 py-3 font-bold text-center'>
+              <span onClick={handleGoogleSignIn} className='w-5/6 px-4 py-3 font-bold text-center'>
                 Sign in with Google
               </span>
             </div>
