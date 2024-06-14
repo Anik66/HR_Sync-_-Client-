@@ -14,7 +14,7 @@ const Navbar = () => {
         <li> <Link to="/ourservice">Contact Us</Link></li>
         <li> <Link to="/pandingwork">PandingWork</Link></li>
         <li>
-            <Link to="/">
+            <Link to="/dashboard">
                 <button className="btn">
                 <FaCartArrowDown className="mr-2"/>
                     <div className="badge badge-secondary">{cart.length}</div>

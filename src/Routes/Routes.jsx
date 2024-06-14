@@ -10,6 +10,8 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PandingWork from "../Pages/PandingWorks/PandingWork";
 import Secret from "../components/Secret/Secret";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../components/WorkCard/Dashboard";
+import Cart from "../Pages/Dashboard/Cart/Cart";
 
 
   export const router = createBrowserRouter([
@@ -45,4 +47,14 @@ import PrivateRoute from "./PrivateRoute";
         }
       ]
     },
+    {
+      path:'dashboard',
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      children:[
+        {
+          path:'dashboard/cart',
+          element:<Cart></Cart>
+        }
+      ]
+    }
   ]);

@@ -4,63 +4,84 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import img1 from "../../assets/register.jpg"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { createContext, useContext, useState } from "react";
+import {  useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const SignUp = () => {
-  const [error,setError] =useState("")
+  const axiosPublic = useAxiosPublic()
+  const [error, setError] = useState("")
   const [showPassword, SetShowPassword] = useState(false)
-  const { register, handleSubmit,reset, formState: { errors } } = useForm();
-  const {createUser,updateUserProfile } =useContext(AuthContext)
-  const navigate =useNavigate()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { createUser, updateUserProfile,googleSignIn } = useContext(AuthContext)
+  const navigate = useNavigate()
   const onSubmit = data => {
     console.log(data)
-    const {email,password,name,photoURL} =data
-    if(password.length <6){
+    const { email, password, name, photoURL } = data
+    if (password.length < 6) {
       setError("password length must be 6 character")
       toast.error("password length must be 6 character")
       return
     }
-    
-   else if(!/.*[A-Z].*/.test(password)){
+
+    else if (!/.*[A-Z].*/.test(password)) {
       setError('password must have one uppercase')
       toast.error("password must have atleast one uppercase")
       return
     }
-   else if(!/.*[a-z].*/.test(password)){
+    else if (!/.*[a-z].*/.test(password)) {
       setError('password must have one lowercase')
       toast.error("password must have atleast one lowercase")
-      
+
 
       return
     }
-    
+
     setError('')
 
-    createUser(email,password)
-    .then(result =>{
-      const loggedUser =result.user 
-      console.log(loggedUser)
-      updateUserProfile(name,photoURL)
-      .then(()=>{
-         console.log('user profile updated')
-         reset()
-         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "user created successfully",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        navigate('/')
+    createUser(email, password)
+      .then(result => {
+        const loggedUser = result.user
+        console.log(loggedUser)
+        updateUserProfile(name, photoURL)
+          .then(() => {
+            const userInfo = {
+              name: name,
+              email: email
+            }
+            axiosPublic.post('/employees', userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                console.log('user added to the database')
+                  reset()
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "user created successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  navigate('/')
+
+                }
+              })
+
+          })
+          .catch(error => console.log(error))
       })
-      .catch(error =>console.log(error))
-    })
 
   };
+
+  const handleGoogleSignIn =() =>{
+    googleSignIn()
+    .then(result =>{
+       console.log(result.user)
+    })
+    navigate('/')
+  }
 
 
 
@@ -109,7 +130,7 @@ const SignUp = () => {
               </svg>
             </div>
 
-            <span className='w-5/6 px-4 py-3 font-bold text-center'>
+            <span onClick={handleGoogleSignIn} className='w-5/6 px-4 py-3 font-bold text-center'>
               Sign in with Google
             </span>
           </div>
@@ -131,7 +152,7 @@ const SignUp = () => {
                 className='block mb-2 text-sm font-medium text-gray-600 '
                 htmlFor='LoggingEmailAddress'
               >
-                
+
                 <span className="label-text text-2xl font-bold">Name</span>
               </label>
               <input
@@ -148,7 +169,7 @@ const SignUp = () => {
                 className='block mb-2 text-sm font-medium text-gray-600 '
                 htmlFor='LoggingEmailAddress'
               >
-                
+
                 <span className="label-text text-2xl font-bold">PhotoURL</span>
               </label>
               <input
@@ -158,14 +179,14 @@ const SignUp = () => {
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
               />
-              {errors.photoURL&& <span className="font-bold pb-1 text-red-500">Photourl is required</span>}
+              {errors.photoURL && <span className="font-bold pb-1 text-red-500">Photourl is required</span>}
             </div>
             <div className='mt-4'>
               <label
                 className='block mb-2 text-sm font-medium text-gray-600 '
                 htmlFor='LoggingEmailAddress'
               >
-                
+
                 <span className="label-text text-2xl font-bold">Email Address</span>
               </label>
               <input
@@ -204,9 +225,9 @@ const SignUp = () => {
           </form>
 
           {
-          error && <small className="text-red-600">{error}</small>
-          
-       }
+            error && <small className="text-red-600">{error}</small>
+
+          }
 
           <div className='flex items-center justify-between mt-4'>
             <span className='w-1/5 border-b  md:w-1/4'></span>
