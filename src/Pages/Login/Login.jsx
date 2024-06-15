@@ -4,6 +4,7 @@ import login from "../../assets/login.jpg"
 import { useContext } from "react"
 import { AuthContext } from "../../Providers/AuthProvider"
 import Swal from "sweetalert2"
+import useAxiosPublic from "../../hooks/useAxiosPublic"
 
 
 
@@ -15,6 +16,7 @@ const Login = () => {
   const { SigIn,googleSignIn} =useContext(AuthContext)
   const navigate =useNavigate()
   const location =useLocation()
+  const axiosPublic =useAxiosPublic()
 
 
   const from =location.state?.from?.pathname || "/";
@@ -56,7 +58,17 @@ const Login = () => {
       googleSignIn()
       .then(result =>{
          console.log(result.user)
-         navigate('/')
+         const userInfo ={
+          email:result.user?.email,
+          name:result.user?.displayName
+
+         }
+         axiosPublic.post('/employees',userInfo)
+         .then(res =>{
+          console.log(res.data)
+          navigate('/')
+         })
+         
       })
       
     }
