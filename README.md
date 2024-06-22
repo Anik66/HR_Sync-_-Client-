@@ -16,4 +16,6 @@ link:https://hr-sync-b8285.web.app/
 🔗 Npm package used for the website
 Swiper package
 Animate.css package
+jwt
+
 
