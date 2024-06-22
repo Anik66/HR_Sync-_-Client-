@@ -35,7 +35,7 @@ const Dashboard = () => {
                          </li>
                          <li>
                         
-                         <NavLink to="dashboard/bookings">  <TbBrandBooking/> Manage Bookings</NavLink> 
+                         <NavLink to="dashboard/items">  <TbBrandBooking/> Manage Bookings</NavLink> 
                          </li>
 
                          <li>

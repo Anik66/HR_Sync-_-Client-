@@ -21,9 +21,9 @@ const Navbar = () => {
                 </button>
             </Link>
         </li>
-        <li> <Link to="/">Dashbroad</Link></li>
+        
         <li> <Link to="/signup">Sign Up</Link></li>
-        <li> <Link to='sec'>sec</Link></li>
+        
 
         
         {!user && <li><Link to='/login'>Login</Link></li>}

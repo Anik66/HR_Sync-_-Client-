@@ -15,12 +15,16 @@ import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddWorks from "../Pages/Dashboard/AddWorks/AddWorks";
 import AdminRoute from "./AdminRoute";
+import ManageWork from "../Pages/Dashboard/ManageWork/ManageWork";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
@@ -43,11 +47,7 @@ import AdminRoute from "./AdminRoute";
           path:'pandingwork',
           element:<PandingWork></PandingWork>
         },
-        {
-          path:'sec',
-          element:<PrivateRoute><Secret></Secret></PrivateRoute>
-
-        }
+        
       ]
     },
     {
@@ -59,10 +59,19 @@ import AdminRoute from "./AdminRoute";
           path:'dashboard/cart',
           element:<Cart></Cart>
         },
+        {
+          path:'dashboard/payment',
+          element:<Payment></Payment>
+        },
         //admin routes
         { 
           path:'dashboard/users',
           element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+
+        },
+        {
+          path:'dashboard/items',
+          element:<AdminRoute><ManageWork/></AdminRoute>
 
         },
         {
