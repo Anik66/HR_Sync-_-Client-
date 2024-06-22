@@ -1,8 +1,19 @@
-# React + Vite
+#HR-Sync
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A brief description of what this project does and who it's for
 
-Currently, two official plugins are available:
+Documentation
+HR-Sync streamlines employee management, integrating recruitment, onboarding, payroll, and performance tracking into one platform, enhancing efficiency and ensuring seamless HR processes for organizations of all sizes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Authors
+Anik Kumar Das
+
+@Anik66
+🔗 Projects-link
+link:
+
+🔗 Npm package used for the website
+Swiper package
+Animate.css package
+
