@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from '../hooks/useAuth'
 
  const axiosSecure =axios.create({
-    baseURL:'http://localhost:8000'
+    baseURL:'https://y-delta-khaki.vercel.app'
  })
 
 const useAxiosSecure = () => {

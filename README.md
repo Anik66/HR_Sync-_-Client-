@@ -11,7 +11,7 @@ Anik Kumar Das
 
 @Anik66
 🔗 Projects-link
-link:
+link:https://hr-sync-b8285.web.app/
 
 🔗 Npm package used for the website
 Swiper package

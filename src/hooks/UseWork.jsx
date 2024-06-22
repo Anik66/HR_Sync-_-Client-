@@ -4,7 +4,7 @@ const UseWork = () =>{
     const [work,setWork] =useState([])
     const [loading,setLoading] =useState(true)
     useEffect(() => {
-        fetch('http://localhost:8000/work')
+        fetch('https://y-delta-khaki.vercel.app')
             .then(res => res.json())
             .then(data => {
                 setWork(data),
